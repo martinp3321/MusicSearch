@@ -1,0 +1,27 @@
+package servlets;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@SuppressWarnings("serial")
+public class RedirectServlet extends BaseServlet {
+
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		if (getUsername(request) != null) {
+			response.sendRedirect("/logindirect");
+		}
+		else {
+			response.sendRedirect("/login");
+		}
+	}
+
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		doGet(request, response);
+	}
+}
